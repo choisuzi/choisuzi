@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-for-beginners/static/css/main.ab6a6028.css",
+    "main.js": "/react-for-beginners/static/js/main.f4d52ba6.js",
+    "index.html": "/react-for-beginners/index.html",
+    "main.ab6a6028.css.map": "/react-for-beginners/static/css/main.ab6a6028.css.map",
+    "main.f4d52ba6.js.map": "/react-for-beginners/static/js/main.f4d52ba6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab6a6028.css",
+    "static/js/main.f4d52ba6.js"
+  ]
+}
