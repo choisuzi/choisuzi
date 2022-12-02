@@ -1,0 +1,69 @@
+import { useEffect, useState } from "react";
+
+function App() {
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  const [coinValue, setCoinValue] = useState(0);
+  const [myCoins, setMyCoins] = useState(0);
+
+  // const [symbol, setSymbol] = useState("");
+
+  const onChange = (event) => {
+    setCoinValue(event.target.value);
+    setMyCoins(0);
+  }
+
+  const inputValue = (event) => {
+    setMyCoins(event.target.value);
+  }
+
+  // const coinSymbol = (event) => {
+  //   setSymbol();
+  // }
+
+  useEffect(() => {
+  fetch("https://api.coinpaprika.com/v1/tickers")
+    .then((response) => response.json())
+    .then((json) => {
+      setCoins(json);
+      setLoading(false);
+    });
+  }, [])
+
+  return (
+    <div>
+      <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
+      {loading ? (
+        <strong>Loading...</strong> 
+      ) : (
+        <select onChange={onChange}>
+          <option>Select coin</option>
+          {coins.map((coin, id) => 
+            <option 
+              key={id}
+              value={coin.quotes.USD.price}
+              symbol={coin.symbol}
+            >
+              {coin.name} ({coin.symbol}) : {coin.quotes.USD.price} USD
+            </option>
+          )}
+        </select>
+      )}
+      <br/>
+      <input 
+        onChange={inputValue}
+        value={myCoins}
+        type="text" 
+        placeholder="your money"
+      />
+      {/* <div>My Coin is <b>{myCoins}</b></div> */}
+      <div>Coins you can get &nbsp;
+        <b>
+          {coinValue === 0 ? 0 : `${myCoins/coinValue}`} 
+        </b>
+      </div>
+    </div>
+  );
+}
+
+export default App;
