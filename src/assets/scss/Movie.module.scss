@@ -31,13 +31,16 @@
   text-decoration: none;
 }
 
-.movie_title a {
-  font-size: 24px;
-  color: #2c2c2c;
-  text-decoration: none;
-}
-.movie_title a:hover {
-  text-decoration: underline;
+.movie_title {
+  a {
+    font-size: 24px;
+    color: #2c2c2c;
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .movie_genres {
@@ -47,9 +50,13 @@
   display: flex;
   flex-wrap: wrap;
   margin: 5px 0px;
+
+  li {
+    margin-right: 10px;
+    font-size: 14px;
+  }
 }
 
-.movie_genres li,
 .movie_year {
   margin-right: 10px;
   font-size: 14px;
